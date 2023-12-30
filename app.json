@@ -1,0 +1,26 @@
+{
+    "name": "Random Anime Image Bot",
+    "description": "This Bot Can Generate Random Anime Images",
+    "repository": "https://github.com/Prime-Hritu/Anime-Generator-Bot",
+    "keywords": ["Random","Anime", "pyrogram", "telegram bot"],
+    "env": {
+        "TOKEN": {
+            "description": "Your Bot token from @Botfather",
+            "required": true
+        },
+        "API_ID": {
+            "description": "Your API_ID from https://my.telegram.org/apps",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "Your API_HASH from https://my.telegram.org/apps",
+            "required": true
+        }
+    },
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ]
+}
+
