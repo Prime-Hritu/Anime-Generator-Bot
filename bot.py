@@ -24,7 +24,8 @@ async def handle_query(client, query):
      up = response['url']
      if up:
       but = [[InlineKeyboardButton("Generate again ✨", callback_data=f'again')],
-             [InlineKeyboardButton("Source Code 🌺", url=f'https://github.com/prime-hritu/Anime-Generator-Bot')]]
+             [InlineKeyboardButton("Source Code 🌺", url=f'https://t.me/Heaven_vibezz')]
+             [InlineKeyboardButton("✨Owner✨",url=f'https://t.me/Hacker_vasi')]]
       markup = InlineKeyboardMarkup(but)
       await query.message.reply_photo(up,caption="**@AIanimeGenBot**",reply_markup=markup)
      else:
@@ -39,7 +40,7 @@ def get_waifu(client, message):
     up = response['url']
     if up:
         button = [[InlineKeyboardButton("Generate again ✨", callback_data=f'again')],
-                  [InlineKeyboardButton("Source Code 🌺", url=f'https://github.com/prime-hritu/Anime-Generator-Bot')]]
+                  [InlineKeyboardButton("Source Code 🌺", url=https://t.me/Heaven_vibezz]]
         markup = InlineKeyboardMarkup(button)
         message.reply_photo(up,caption="**@AIanimeGenBot**",reply_markup=markup)
     else:
