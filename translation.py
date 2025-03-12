@@ -28,4 +28,5 @@ class INLINE:
                     ),
                 ]
             )
+        BOARD.append([InlineKeyboardButton("🌺 Source Code", url=BOT.SOURCE)])
         return InlineKeyboardMarkup(BOARD)
