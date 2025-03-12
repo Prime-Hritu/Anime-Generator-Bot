@@ -44,7 +44,7 @@ class Private_Bots(Client):
         await app.setup()
         bind_address = "0.0.0.0"
         self.site = web.TCPSite(app, bind_address, WEB.PORT)
-        self.site.start()
+        await self.site.start()
         logging.info(f"{me.first_name} ✅✅ BOT started successfully ✅✅")
 
     async def stop(self, *args):
