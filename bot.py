@@ -1,5 +1,5 @@
 from pyrogram import Client
-from config import BOT, API, WEB
+from config import BOT, API, WEB, OWNER
 from aiohttp import web
 import logging, os
 
@@ -36,6 +36,7 @@ class Private_Bots(Client):
         me = await self.get_me()
         self.mention = me.mention
         self.username = me.username
+        await self.send_message(chat_id=int(OWNER.ID), text=f"{me.first_name} ✅✅ BOT started successfully ✅✅")
         app = web.AppRunner(await web_server())
         await app.setup()
         bind_address = "0.0.0.0"
