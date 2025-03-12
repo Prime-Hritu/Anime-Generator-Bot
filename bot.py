@@ -36,14 +36,19 @@ class Private_Bots(Client):
         me = await self.get_me()
         self.mention = me.mention
         self.username = me.username
-        await self.send_message(chat_id=int(OWNER.ID), text=f"{me.first_name} ✅✅ BOT started successfully ✅✅")
+        await self.send_message(
+            chat_id=int(OWNER.ID),
+            text=f"{me.first_name} ✅✅ BOT started successfully ✅✅",
+        )
         app = web.AppRunner(await web_server())
         await app.setup()
         bind_address = "0.0.0.0"
-        await web.TCPSite(app, bind_address, WEB.PORT).start()
+        self.site = web.TCPSite(app, bind_address, WEB.PORT)
+        self.site.start()
         logging.info(f"{me.first_name} ✅✅ BOT started successfully ✅✅")
 
     async def stop(self, *args):
+        await self.site.stop()
         await super().stop()
         logging.info("Bot Stopped 🙄")
         os.remove("my_app.session")
