@@ -1,48 +1,51 @@
-from pyrogram import Client, filters
-import requests
-import random
-import os
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup  
-from myrogram import notJoin , forceMe
+from pyrogram import Client
+from config import BOT, API, WEB
+from aiohttp import web
+import logging, os
 
-TOKEN = os.environ.get("TOKEN", "")
+routes = web.RouteTableDef()
+logging.getLogger().setLevel(logging.INFO)
 
-API_ID = int(os.environ.get("API_ID", ))
 
-API_HASH = os.environ.get("API_HASH", "")
+async def web_server():
+    web_app = web.Application(client_max_size=30000000)
+    web_app.add_routes(routes)
+    return web_app
 
-app = Client("anime-gen", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 
-regex_photo = ["waifu","neko"]
-pht = random.choice(regex_photo)
-url = f"https://api.waifu.pics/sfw/{pht}"
-      
-@app.on_callback_query()
-async def handle_query(client, query):
-    if query.data == "again":
-     response = requests.get(url).json()
-     up = response['url']
-     if up:
-      but = [[InlineKeyboardButton("Generate again ✨", callback_data=f'again')],
-             [InlineKeyboardButton("Source Code 🌺", url=f'https://github.com/prime-hritu/Anime-Generator-Bot')]]
-      markup = InlineKeyboardMarkup(but)
-      await query.message.reply_photo(up,caption="**@AIanimeGenBot**",reply_markup=markup)
-     else:
-      await query.message.reply("Request failed try /again")
-    		
-@app.on_message(filters.private)
-def get_waifu(client, message):
-    res = forceMe(message.chat.id)
-    if res == "no":
-      return notJoin(client,message)
-    response = requests.get(url).json()
-    up = response['url']
-    if up:
-        button = [[InlineKeyboardButton("Generate again ✨", callback_data=f'again')],
-                  [InlineKeyboardButton("Source Code 🌺", url=f'https://github.com/prime-hritu/Anime-Generator-Bot')]]
-        markup = InlineKeyboardMarkup(button)
-        message.reply_photo(up,caption="**@AIanimeGenBot**",reply_markup=markup)
-    else:
-        message.reply("Request failed try /again")
-        
-app.run()
+@routes.get("/", allow_head=True)
+async def root_route_handler(request):
+    file_path = os.path.join(os.path.dirname(__file__), "web", "index.html")
+    return web.FileResponse(file_path)
+
+
+class Private_Bots(Client):
+
+    def __init__(self):
+        super().__init__(
+            "my_app",
+            API.ID,
+            API.HASH,
+            bot_token=BOT.TOKEN,
+            plugins=dict(root="plugins"),
+            workers=16,
+        )
+
+    async def start(self):
+        await super().start()
+        me = await self.get_me()
+        self.mention = me.mention
+        self.username = me.username
+        app = web.AppRunner(await web_server())
+        await app.setup()
+        bind_address = "0.0.0.0"
+        await web.TCPSite(app, bind_address, WEB.PORT).start()
+        logging.info(f"{me.first_name} ✅✅ BOT started successfully ✅✅")
+
+    async def stop(self, *args):
+        await super().stop()
+        logging.info("Bot Stopped 🙄")
+        os.remove("my_app.session")
+
+
+Private_Bots().run()
