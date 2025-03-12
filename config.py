@@ -59,8 +59,4 @@ class SENSITIVE:
           True means extremly and only 18+ (NSFW) contents.
     """
 
-    NSFW = os.environ.get("NSFW", False)
-    try:
-        NSFW = bool(NSFW)
-    except:
-        NSFW = False
+    NSFW = False

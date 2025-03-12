@@ -28,7 +28,7 @@ Add these environment variables to configure your bot:
 | `API_HASH` | API Hash from [my.telegram.org](https://my.telegram.org/apps) |
 | `OWNER` | Your Telegram User ID from [@userinfobot](https://t.me/userinfobot) |
 | `PORT` | Port number for the bot (default: 8080) |
-| `NSFW` | `"True"` for NSFW content, `"False"` otherwise (default: `False`) |
+| `NSFW` | Change it in config.py |
 
 ---
 
