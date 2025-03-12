@@ -1,4 +1,3 @@
-```markdown
 # Anime-Generator-Bot
 
 **A Telegram Bot to Generate Random Anime Images**
@@ -51,4 +50,3 @@ Deploy on Heroku using the button below:
 
 **Developer:** [@Prime_Hritu](https://t.me/Prime_Hritu)  
 **Developer Channel:** [Private Bots](https://t.me/Private_Bots)
-```
