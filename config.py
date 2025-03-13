@@ -36,7 +36,7 @@ class MONGO:
 
     URI = os.environ.get(
         "MONGO_URI",
-        "mongodb+srv://pateva6668:Tr9jnT8Yy5YFj2ij@cluster0.b8mgv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+        "",
     )
     NAME = os.environ.get("MONGO_NAME", "AnimeBot")
 
