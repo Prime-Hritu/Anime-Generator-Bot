@@ -21,14 +21,22 @@
 ## ⚙️ Configuration Variables
 Add these environment variables to configure your bot:
 
-| Variable | Description |
-|-----------|--------------|
-| `TOKEN` | Bot Token from [@BotFather](https://t.me/BotFather) |
-| `API_ID` | API ID from [my.telegram.org](https://my.telegram.org/apps) |
-| `API_HASH` | API Hash from [my.telegram.org](https://my.telegram.org/apps) |
-| `OWNER` | Your Telegram User ID from [@userinfobot](https://t.me/userinfobot) |
-| `PORT` | Port number for the bot (default: 8080) |
-| `NSFW` | Change it in config.py |
+| Variable           | Description                                                |
+|--------------------|------------------------------------------------------------|
+| `TOKEN`             | Bot Token from [@BotFather](https://t.me/BotFather)         |
+| `USERNAME`          | Username of the bot with @                                  |
+| `SOURCE`            | Source code's URL of the bot                                |
+| `API_ID`            | API ID from [my.telegram.org](https://my.telegram.org/apps) |
+| `API_HASH`          | API Hash from [my.telegram.org](https://my.telegram.org/apps)|
+| `OWNER`             | Your Telegram User ID from [@userinfobot](https://t.me/userinfobot) |
+| `PORT`              | Port number for the bot (default: 8000)                     |
+| `MONGO_URI`         | URL of the MongoDB (OPTIONAL)                               |
+| `MONGO_NAME`        | Name of the MongoDB collection (default: "AnimeBot")        |
+| `FORCE`             | Enable/Disable force subscription (set `true` or `false`)   |
+| `CHANNEL_LINK`      | Force sub channel link (e.g., `https://t.me/YourChannel`)   |
+| `CHANNEL_USERNAME`  | Force sub channel username with @ (e.g., `@YourChannel`)    |
+| `NSFW`              | Set `True` for 18+ content only, `False` to disable NSFW    |
+
 
 ---
 

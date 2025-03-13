@@ -1,5 +1,6 @@
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from config import SENSITIVE, BOT
+from config import FORCE as FORCER
 from modules.enums import PicCategory
 
 
@@ -7,6 +8,14 @@ class TEXT:
     START = f"""
 <b>🌸 {BOT.USERNAME}</b>
 """
+    THANKS_FOR_JOINING = "<b>Thanks for joining <a href='{}'>our channel</a></b>"
+    FORCE_SUB_TEXT = (
+        "<b>Please Join [ </b><a href='{}'>{}</a> <b>] to continue using this bot.</b>"
+    )
+    BROADCAST = "<b><i>Broadcast Status:\n\nSuccess: {}\nFailed: {}</i></b>"
+    FETCHING_DATABSE = "<b><i>⚙️ Fetching database...</i></b>"
+    STATUS = "<b>Status:</b>\n\n<i>Total Users: {}</i>"
+    STARTED = "<b>Started...</b>"
 
 
 class INLINE:
@@ -30,3 +39,9 @@ class INLINE:
             )
         BOARD.append([InlineKeyboardButton("🌺 Source Code", url=BOT.SOURCE)])
         return InlineKeyboardMarkup(BOARD)
+
+    FORCE_SUB_BOARD = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("🔈 Join Channel", url=FORCER.CHANNEL_LINK)],
+        ],
+    )

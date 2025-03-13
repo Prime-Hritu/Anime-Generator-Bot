@@ -23,3 +23,7 @@
 ## python-dotenv
 - **Version:** 1.0.1
 - **Purpose:** Reads key-value pairs from a `.env` file and can set them as environment variables.
+
+## PyMongo
+- **Version:** 4.11.2
+- **Purpose:** Creates a database (MongoDB) management system for the project.
