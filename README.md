@@ -59,5 +59,10 @@ Deploy easily using these platforms:
 
 ---
 
+## Libraries Used
+You can find the list of libraries used in this project and their purposes in the [Libraries Used](./libraries.md) section.
+
+---
+
 ## 🔖 License
 This project is licensed under the [MIT License](LICENSE).
