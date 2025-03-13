@@ -1,10 +1,13 @@
 from pyrogram import Client
-from config import BOT, API, WEB, OWNER
+from pyrogram.enums import ChatMemberStatus
+from pyrogram.errors import UserNotParticipant
+from config import BOT, API, WEB, OWNER, FORCE
 from aiohttp import web
-import logging, os
+import logging, os, traceback
 
 routes = web.RouteTableDef()
 logging.getLogger().setLevel(logging.INFO)
+logging.getLogger("pyrogram").setLevel(logging.ERROR)
 
 
 async def web_server():
@@ -36,6 +39,34 @@ class Private_Bots(Client):
         me = await self.get_me()
         self.mention = me.mention
         self.username = me.username
+        if FORCE.FORCE_BOOL == True:
+            try:
+                member = await self.get_chat_member(FORCE.CHANNEL_USERNAME, me.id)
+                if member.status in [
+                    ChatMemberStatus.OWNER,
+                    ChatMemberStatus.ADMINISTRATOR,
+                ]:
+                    pass
+            except UserNotParticipant:
+                logging.info(
+                    f"{me.first_name}: Bot is not admin in {FORCE.CHANNEL_USERNAME}"
+                )
+                await self.send_message(
+                    chat_id=int(OWNER.ID),
+                    text=f"{me.first_name}: Bot is not admin in {FORCE.CHANNEL_USERNAME}",
+                )
+                await super().stop()
+                return
+            except Exception:
+                logging.info(
+                    f"❌❌ {me.first_name}: Error occoured while starting\n\n{str(traceback.format_exc())}"
+                )
+                await self.send_message(
+                    chat_id=int(OWNER.ID),
+                    text=f"❌❌ {me.first_name}: Error occoured while starting\n\n{str(traceback.format_exc())}",
+                )
+                await super().stop()
+                return
         await self.send_message(
             chat_id=int(OWNER.ID),
             text=f"{me.first_name} ✅✅ BOT started successfully ✅✅",

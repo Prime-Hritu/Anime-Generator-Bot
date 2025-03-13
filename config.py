@@ -28,6 +28,33 @@ class API:
     ID = int(os.environ.get("API_ID", 0))
 
 
+class MONGO:
+    """
+    URI: MongoDB Url (optional)
+    NAME: MongoDB collection name (optional)
+    """
+
+    URI = os.environ.get(
+        "MONGO_URI",
+        "",
+    )
+    NAME = os.environ.get("MONGO_NAME", "AnimeBot")
+
+
+class FORCE:
+    """
+    CHANNEL_LINK: Force sub channel link as url.
+    CHANNEL_USERNAME: Force sub channel username with @
+    """
+
+    FORCE_SUB = os.environ.get("FORCE", "")
+    FORCE_BOOL = True if str(FORCE_SUB).lower() == "true" else False
+    CHANNEL_LINK = os.environ.get("CHANNEL_LINK", "")  # https://t.me/Private_Bots
+    CHANNEL_USERNAME = os.environ.get(
+        "CHANNEL_USERNAME", ""
+    )  # with @ ( @Private_Bots )
+
+
 class OWNER:
     """
     ID: Owner's user id, get it from @userinfobot
@@ -59,4 +86,4 @@ class SENSITIVE:
           True means extremly and only 18+ (NSFW) contents.
     """
 
-    NSFW = False
+    NSFW = True if str(os.environ.get("NSFW", "false")).lower() == "true" else False
