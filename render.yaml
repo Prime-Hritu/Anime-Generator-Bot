@@ -4,35 +4,35 @@ services:
     plan: free
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "python main.py"
+    startCommand: "python bot.py"
     envVars:
       - key: TOKEN
         description: "Telegram Bot token from @BotFather"
-        value: "your-token-here"
+        sync: false
       - key: API_HASH
         description: "Telegram API hash from https://my.telegram.org"
-        value: "your-api-hash-here"
+        sync: false
       - key: API_ID
         description: "Telegram API ID from https://my.telegram.org"
-        value: "your-api-id-here"
+        sync: false
       - key: MONGO_URI
         description: "MongoDB URI (optional, if you use MongoDB)"
-        value: ""
+        sync: false
       - key: MONGO_NAME
         description: "MongoDB collection name"
-        value: "AnimeBot"
+        sync: false
       - key: FORCE
         description: "Force sub channel flag (set to 'true' to enable, otherwise 'false')"
-        value: "false"
+        sync: false
       - key: CHANNEL_LINK
         description: "Telegram channel link for forced sub (optional)"
-        value: ""
+        sync: false
       - key: CHANNEL_USERNAME
         description: "Telegram channel username (with @) for forced sub (optional)"
-        value: ""
+        sync: false
       - key: OWNER
         description: "Owner's Telegram user ID (from @userinfobot)"
-        value: "your-owner-id-here"
+        sync: false
       - key: NSFW
         description: "NSFW flag: set to 'true' for NSFW-only content, otherwise 'false'"
-        value: "false"
+        sync: false
