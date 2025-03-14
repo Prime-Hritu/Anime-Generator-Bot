@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: Anime-Generator-Bot
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python main.py"
+    envVars:
+      - key: TOKEN
+        description: "Telegram Bot token from @BotFather"
+        value: "your-token-here"
+      - key: API_HASH
+        description: "Telegram API hash from https://my.telegram.org"
+        value: "your-api-hash-here"
+      - key: API_ID
+        description: "Telegram API ID from https://my.telegram.org"
+        value: "your-api-id-here"
+      - key: MONGO_URI
+        description: "MongoDB URI (optional, if you use MongoDB)"
+        value: ""
+      - key: MONGO_NAME
+        description: "MongoDB collection name"
+        value: "AnimeBot"
+      - key: FORCE
+        description: "Force sub channel flag (set to 'true' to enable, otherwise 'false')"
+        value: "false"
+      - key: CHANNEL_LINK
+        description: "Telegram channel link for forced sub (optional)"
+        value: ""
+      - key: CHANNEL_USERNAME
+        description: "Telegram channel username (with @) for forced sub (optional)"
+        value: ""
+      - key: OWNER
+        description: "Owner's Telegram user ID (from @userinfobot)"
+        value: "your-owner-id-here"
+      - key: NSFW
+        description: "NSFW flag: set to 'true' for NSFW-only content, otherwise 'false'"
+        value: "false"
