@@ -1,6 +1,7 @@
 services:
   - type: web
     name: Anime-Generator-Bot
+    plan: free
     env: python
     buildCommand: "pip install -r requirements.txt"
     startCommand: "python main.py"
