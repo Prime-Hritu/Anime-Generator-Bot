@@ -1,38 +1,61 @@
 {
-    "name": "Random Anime Image Bot",
-    "description": "This Bot Can Generate Random Anime Images",
-    "repository": "https://github.com/prime-hritu/Anime-Generator-Bot",
-    "keywords": ["Random", "Anime", "pyrogram", "telegram bot"],
-    "env": {
-      "TOKEN": {
-        "description": "Your Bot token from @Botfather",
-        "required": true
-      },
-      "API_ID": {
-        "description": "Your Telegram API ID from https://my.telegram.org/apps",
-        "required": true
-      },
-      "API_HASH": {
-        "description": "Your Telegram API hash from https://my.telegram.org/apps",
-        "required": true
-      },
-      "OWNER": {
-        "description": "Your Telegram user id from @userinfobot",
-        "required": true
-      },
-      "PORT": {
-        "description": "Port on which the bot runs. Heroku assigns this automatically if not set.",
-        "value": "8080"
-      },
-      "NSFW": {
-        "description": "Set to true to enable NSFW content; false otherwise",
-        "value": "False"
-      }
+  "name": "Anime-Generator-Bot",
+  "description": "A Telegram bot that generates anime images.",
+  "repository": "https://github.com/prime-hritu/Anime-Generator-Bot",
+  "keywords": [
+    "telegram",
+    "bot",
+    "anime"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "env": {
+    "TOKEN": {
+      "description": "Telegram Bot token from @BotFather",
+      "required": true
     },
-    "buildpacks": [
-      {
-        "url": "heroku/python"
-      }
-    ]
+    "API_HASH": {
+      "description": "Telegram API hash from https://my.telegram.org",
+      "required": true
+    },
+    "API_ID": {
+      "description": "Telegram API ID from https://my.telegram.org",
+      "required": true
+    },
+    "MONGO_URI": {
+      "description": "MongoDB URI (optional, if you use MongoDB)",
+      "required": false
+    },
+    "MONGO_NAME": {
+      "description": "MongoDB collection name",
+      "value": "AnimeBot"
+    },
+    "FORCE": {
+      "description": "Force sub channel flag (set to 'true' to enable, otherwise 'false')",
+      "value": "false"
+    },
+    "CHANNEL_LINK": {
+      "description": "Telegram channel link for forced sub (optional)",
+      "required": false
+    },
+    "CHANNEL_USERNAME": {
+      "description": "Telegram channel username (with @) for forced sub (optional)",
+      "required": false
+    },
+    "OWNER": {
+      "description": "Owner's Telegram user ID (from @userinfobot)",
+      "required": true
+    },
+    "NSFW": {
+      "description": "NSFW flag: set to 'true' for NSFW-only content, otherwise 'false'",
+      "value": "false"
+    },
+    "PORT": {
+      "description": "Port for the web server (Heroku sets this automatically, default is 8000)",
+      "value": "8000"
+    }
   }
-  
+}
